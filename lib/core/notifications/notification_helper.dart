@@ -16,11 +16,16 @@ class NotificationHelper {
       android: initializationSettingsAndroid,
     );
 
-    // Call initialize with named parameters
+    // Initialize with onDidReceiveNotificationResponse callback
     await _notifications.initialize(
       initializationSettings,
-      onDidReceiveNotificationResponse: (response) {},
+      onDidReceiveNotificationResponse: _onDidReceiveNotificationResponse,
     );
+  }
+
+  static void _onDidReceiveNotificationResponse(NotificationResponse response) {
+    // Handle notification tap
+    debugPrint('Notification tapped with payload: ${response.payload}');
   }
 
   static Future<void> requestPermissions() async {
@@ -36,6 +41,7 @@ class NotificationHelper {
     required int id,
     required String title,
     required String body,
+    String payload = '',
   }) async {
     const AndroidNotificationDetails androidDetails = AndroidNotificationDetails(
       'linkvault_channel',
@@ -49,13 +55,13 @@ class NotificationHelper {
       android: androidDetails,
     );
 
-    // Use named parameters
+    // Use positional parameters for show() method
     await _notifications.show(
-      id: id,
-      title: title,
-      body: body,
-      notificationDetails: platformDetails,
-      payload: '',
+      id,
+      title,
+      body,
+      platformDetails,
+      payload: payload,
     );
   }
 
@@ -65,6 +71,7 @@ class NotificationHelper {
     required String body,
     required int hour,
     required int minute,
+    String payload = '',
   }) async {
     const AndroidNotificationDetails androidDetails = AndroidNotificationDetails(
       'linkvault_reminders',
@@ -78,15 +85,18 @@ class NotificationHelper {
       android: androidDetails,
     );
 
-    // Use named parameters with proper API
+    // Use zonedSchedule with proper positional parameters
     await _notifications.zonedSchedule(
-      id: id,
-      title: title,
-      body: body,
-      scheduledDate: _nextInstanceOfTime(hour, minute),
-      notificationDetails: platformDetails,
+      id,
+      title,
+      body,
+      _nextInstanceOfTime(hour, minute),
+      platformDetails,
       androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
       matchDateTimeComponents: DateTimeComponents.time,
+      uiLocalNotificationDateInterpretation:
+          UILocalNotificationDateInterpretation.absoluteTime,
+      payload: payload,
     );
   }
 
