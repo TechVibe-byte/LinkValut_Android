@@ -16,9 +16,9 @@ class NotificationHelper {
       android: initializationSettingsAndroid,
     );
 
-    // Call initialize with named parameters
+    // Call initialize with positional parameter
     await _notifications.initialize(
-      initializationSettings: initializationSettings,
+      initializationSettings,
       onDidReceiveNotificationResponse: (response) {},
     );
   }
