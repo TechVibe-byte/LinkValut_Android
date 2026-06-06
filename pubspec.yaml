@@ -81,4 +81,4 @@ flutter:
   uses-material-design: true
 
 dependency_overrides:
-  win32: any
+  win32: ^5.9.0
