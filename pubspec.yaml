@@ -1,0 +1,81 @@
+name: linkvault
+description: "A Personal Knowledge Manager, Learning Tracker, and Resource Organizer."
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.12.1
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+
+  # State Management
+  provider: any
+
+  # Local Database
+  hive: any
+  hive_flutter: any
+
+  # JSON Export/Import
+  path_provider: any
+  file_picker: ^8.0.0
+
+  # Charts & Analytics
+  fl_chart: any
+
+  # URL Launcher
+  url_launcher: any
+
+  # Sharing
+  share_plus: any
+
+  # Notifications
+  flutter_local_notifications: ^17.2.2
+  timezone: any
+
+  # Theme Management
+  shared_preferences: any
+
+  # QR Features
+  qr_flutter: any
+
+  # Reorderable Queue
+  flutter_slidable: any
+
+  # Markdown Notes
+  flutter_markdown: any
+
+  # Icons
+  font_awesome_flutter: any
+
+  # Animations
+  animations: any
+
+  # App Lock
+  local_auth: any
+
+  # UUID Generation
+  uuid: any
+
+  # Date Formatting
+  intl: any
+
+  # Connectivity
+  connectivity_plus: any
+
+  # PWA-like Experience
+  package_info_plus: any
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^6.0.0
+
+  build_runner: any
+  hive_generator: any
+  hive: any # needed for generation
+
+flutter:
+  uses-material-design: true
