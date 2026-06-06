@@ -3,7 +3,8 @@ import 'package:timezone/data/latest_10y.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
 
 class NotificationHelper {
-  static final FlutterLocalNotificationsPlugin _notifications = FlutterLocalNotificationsPlugin();
+  static final FlutterLocalNotificationsPlugin _notifications =
+      FlutterLocalNotificationsPlugin();
 
   static Future<void> init() async {
     tz.initializeTimeZones();
@@ -15,12 +16,14 @@ class NotificationHelper {
       android: initializationSettingsAndroid,
     );
 
+    // Call initialize with no arguments
     await _notifications.initialize(initializationSettings);
   }
 
   static Future<void> requestPermissions() async {
     final AndroidFlutterLocalNotificationsPlugin? androidPlatformChannelSpecifics =
-        _notifications.resolvePlatformSpecificImplementation<AndroidFlutterLocalNotificationsPlugin>();
+        _notifications.resolvePlatformSpecificImplementation<
+            AndroidFlutterLocalNotificationsPlugin>();
     if (androidPlatformChannelSpecifics != null) {
       await androidPlatformChannelSpecifics.requestNotificationsPermission();
     }
@@ -43,7 +46,13 @@ class NotificationHelper {
       android: androidDetails,
     );
 
-    await _notifications.show(id, title, body, platformDetails);
+    // Use named parameters
+    await _notifications.show(
+      id,
+      title,
+      body,
+      platformDetails,
+    );
   }
 
   static Future<void> scheduleDailyReminder({
@@ -65,6 +74,7 @@ class NotificationHelper {
       android: androidDetails,
     );
 
+    // Remove uiLocalNotificationDateInterpretation parameter
     await _notifications.zonedSchedule(
       id,
       title,
@@ -72,15 +82,14 @@ class NotificationHelper {
       _nextInstanceOfTime(hour, minute),
       platformDetails,
       androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
-      uiLocalNotificationDateInterpretation: UILocalNotificationDateInterpretation.absoluteTime,
       matchDateTimeComponents: DateTimeComponents.time,
     );
   }
 
   static tz.TZDateTime _nextInstanceOfTime(int hour, int minute) {
     final tz.TZDateTime now = tz.TZDateTime.now(tz.local);
-    tz.TZDateTime scheduledDate =
-        tz.TZDateTime(tz.local, now.year, now.month, now.day, hour, minute);
+    tz.TZDateTime scheduledDate = tz.TZDateTime(
+        tz.local, now.year, now.month, now.day, hour, minute);
     if (scheduledDate.isBefore(now)) {
       scheduledDate = scheduledDate.add(const Duration(days: 1));
     }
