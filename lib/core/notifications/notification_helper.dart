@@ -18,7 +18,7 @@ class NotificationHelper {
 
     // Call initialize with named parameters
     await _notifications.initialize(
-      initializationSettings,
+      initializationSettings: initializationSettings,
       onDidReceiveNotificationResponse: (response) {},
     );
   }
@@ -51,10 +51,10 @@ class NotificationHelper {
 
     // Use named parameters
     await _notifications.show(
-      id,
-      title,
-      body,
-      platformDetails,
+      id: id,
+      title: title,
+      body: body,
+      notificationDetails: platformDetails,
       payload: '',
     );
   }
@@ -80,11 +80,11 @@ class NotificationHelper {
 
     // Use named parameters with proper API
     await _notifications.zonedSchedule(
-      id,
-      title,
-      body,
-      _nextInstanceOfTime(hour, minute),
-      platformDetails,
+      id: id,
+      title: title,
+      body: body,
+      scheduledDate: _nextInstanceOfTime(hour, minute),
+      notificationDetails: platformDetails,
       androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
       matchDateTimeComponents: DateTimeComponents.time,
     );
