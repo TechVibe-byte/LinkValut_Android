@@ -19,7 +19,7 @@ class NotificationHelper {
 
     // Initialize with onDidReceiveNotificationResponse callback
     await _notifications.initialize(
-      initializationSettings,
+      settings: initializationSettings,
       onDidReceiveNotificationResponse: _onDidReceiveNotificationResponse,
     );
   }
