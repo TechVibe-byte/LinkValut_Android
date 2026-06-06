@@ -16,8 +16,11 @@ class NotificationHelper {
       android: initializationSettingsAndroid,
     );
 
-    // Call initialize with no arguments
-    await _notifications.initialize(initializationSettings);
+    // Call initialize with named parameters
+    await _notifications.initialize(
+      initializationSettings,
+      onDidReceiveNotificationResponse: (response) {},
+    );
   }
 
   static Future<void> requestPermissions() async {
@@ -52,6 +55,7 @@ class NotificationHelper {
       title,
       body,
       platformDetails,
+      payload: '',
     );
   }
 
@@ -74,13 +78,14 @@ class NotificationHelper {
       android: androidDetails,
     );
 
-    // Remove uiLocalNotificationDateInterpretation parameter
+    // Use named parameters with uiLocalNotificationDateInterpretation
     await _notifications.zonedSchedule(
       id,
       title,
       body,
       _nextInstanceOfTime(hour, minute),
       platformDetails,
+      uiLocalNotificationDateInterpretation: UILocalNotificationDateInterpretation.absoluteTime,
       androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
       matchDateTimeComponents: DateTimeComponents.time,
     );
