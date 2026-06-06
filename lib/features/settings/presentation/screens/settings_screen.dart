@@ -9,7 +9,7 @@ import '../../../learning/presentation/providers/learning_provider.dart';
 import '../../../../core/database/hive_helper.dart';
 
 class SettingsScreen extends StatefulWidget {
-  const SettingsScreen({Key? key}) : super(key: key);
+  const SettingsScreen({super.key});
 
   @override
   State<SettingsScreen> createState() => _SettingsScreenState();
@@ -137,7 +137,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   subtitle: const Text('Export resources to a JSON file'),
                   onTap: () async {
                     final msg = await BackupHelper.exportBackup();
-                    if (msg != null && mounted) {
+                    if (!context.mounted) return;
+                    if (msg != null) {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(content: Text(msg), behavior: SnackBarBehavior.floating),
                       );
@@ -151,7 +152,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   subtitle: const Text('Import resources from a JSON file'),
                   onTap: () async {
                     final msg = await BackupHelper.importBackup();
-                    if (msg != null && mounted) {
+                    if (!context.mounted) return;
+                    if (msg != null) {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(content: Text(msg), behavior: SnackBarBehavior.floating),
                       );
@@ -231,15 +233,14 @@ class _SettingsScreenState extends State<SettingsScreen> {
               final pin = pinController.text;
               if (pin.length == 4 && int.tryParse(pin) != null) {
                 await AuthHelper.enablePin(pin);
+                if (!context.mounted) return;
                 Navigator.of(ctx).pop();
                 setState(() {
                   _pinEnabled = true;
                 });
-                if (mounted) {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    const SnackBar(content: Text('PIN Lock enabled successfully'), behavior: SnackBarBehavior.floating),
-                  );
-                }
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text('PIN Lock enabled successfully'), behavior: SnackBarBehavior.floating),
+                );
               } else {
                 ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(content: Text('Please enter a valid 4-digit numeric PIN'), behavior: SnackBarBehavior.floating),
@@ -340,6 +341,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               rp.refresh();
               lp.resetProgressData();
               
+              if (!context.mounted) return;
               setState(() {
                 _pinEnabled = false;
                 _biometricEnabled = false;
@@ -347,11 +349,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
               });
 
               Navigator.of(ctx).pop();
-              if (mounted) {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('App data has been completely reset'), behavior: SnackBarBehavior.floating),
-                );
-              }
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text('App data has been completely reset'), behavior: SnackBarBehavior.floating),
+              );
             },
             style: ElevatedButton.styleFrom(backgroundColor: Colors.red, foregroundColor: Colors.white),
             child: const Text('Reset Everything'),

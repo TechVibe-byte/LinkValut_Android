@@ -8,7 +8,7 @@ import 'resource_detail_screen.dart';
 import 'add_edit_resource_screen.dart';
 
 class ResourceListScreen extends StatefulWidget {
-  const ResourceListScreen({Key? key}) : super(key: key);
+  const ResourceListScreen({super.key});
 
   @override
   State<ResourceListScreen> createState() => _ResourceListScreenState();
@@ -191,7 +191,7 @@ class _ResourceListScreenState extends State<ResourceListScreen> {
       avatar: Icon(icon, size: 16),
       label: Text(label),
       onPressed: onSelected,
-      backgroundColor: isSelected ? Colors.indigo.withOpacity(0.1) : null,
+      backgroundColor: isSelected ? Colors.indigo.withValues(alpha: 0.1) : null,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(20),
       ),
@@ -285,7 +285,7 @@ class _ResourceListScreenState extends State<ResourceListScreen> {
                         child: LinearProgressIndicator(
                           value: resource.progressPercentage / 100,
                           borderRadius: BorderRadius.circular(4),
-                          backgroundColor: theme.colorScheme.surfaceVariant,
+                          backgroundColor: theme.colorScheme.surfaceContainerHighest,
                         ),
                       ),
                       const SizedBox(width: 12),
@@ -306,7 +306,7 @@ class _ResourceListScreenState extends State<ResourceListScreen> {
                         return Container(
                           padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
                           decoration: BoxDecoration(
-                            color: theme.colorScheme.secondaryContainer.withOpacity(0.5),
+                            color: theme.colorScheme.secondaryContainer.withValues(alpha: 0.5),
                             borderRadius: BorderRadius.circular(6),
                           ),
                           child: Text(

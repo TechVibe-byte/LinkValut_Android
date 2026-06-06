@@ -4,7 +4,7 @@ import '../../../resources/presentation/providers/resource_provider.dart';
 import '../../../resources/presentation/screens/resource_detail_screen.dart';
 
 class LearningQueueScreen extends StatelessWidget {
-  const LearningQueueScreen({Key? key}) : super(key: key);
+  const LearningQueueScreen({super.key});
 
   @override
   Widget build(BuildContext context) {

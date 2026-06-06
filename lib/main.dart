@@ -30,7 +30,7 @@ void main() async {
 }
 
 class LinkVaultApp extends StatefulWidget {
-  const LinkVaultApp({Key? key}) : super(key: key);
+  const LinkVaultApp({super.key});
 
   @override
   State<LinkVaultApp> createState() => _LinkVaultAppState();

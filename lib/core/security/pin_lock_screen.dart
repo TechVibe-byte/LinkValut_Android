@@ -4,7 +4,7 @@ import 'auth_helper.dart';
 class PinLockScreen extends StatefulWidget {
   final VoidCallback onUnlocked;
 
-  const PinLockScreen({Key? key, required this.onUnlocked}) : super(key: key);
+  const PinLockScreen({super.key, required this.onUnlocked});
 
   @override
   State<PinLockScreen> createState() => _PinLockScreenState();

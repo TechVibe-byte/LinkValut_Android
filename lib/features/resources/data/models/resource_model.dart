@@ -78,7 +78,7 @@ class ResourceModel extends HiveObject {
     int? queueIndex,
   }) {
     return ResourceModel(
-      id: this.id,
+      id: id,
       title: title ?? this.title,
       url: url ?? this.url,
       platformType: platformType ?? this.platformType,
@@ -87,7 +87,7 @@ class ResourceModel extends HiveObject {
       isFavorite: isFavorite ?? this.isFavorite,
       isRead: isRead ?? this.isRead,
       progressPercentage: progressPercentage ?? this.progressPercentage,
-      dateAdded: this.dateAdded,
+      dateAdded: dateAdded,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       learningStatus: learningStatus ?? this.learningStatus,
       isArchived: isArchived ?? this.isArchived,

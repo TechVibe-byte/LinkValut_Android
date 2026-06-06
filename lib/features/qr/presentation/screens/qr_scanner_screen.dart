@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import '../../../resources/presentation/providers/resource_provider.dart';
 
 class QrScannerScreen extends StatefulWidget {
-  const QrScannerScreen({Key? key}) : super(key: key);
+  const QrScannerScreen({super.key});
 
   @override
   State<QrScannerScreen> createState() => _QrScannerScreenState();
@@ -78,16 +78,15 @@ class _QrScannerScreenState extends State<QrScannerScreen> {
                   tags: tags,
                   notes: '',
                 );
+                if (!context.mounted) return;
                 Navigator.of(ctx).pop();
-                if (mounted) {
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      content: Text('Successfully imported "$title"'),
-                      behavior: SnackBarBehavior.floating,
-                    ),
-                  );
-                  Navigator.of(context).pop(); // Go back from scanner
-                }
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(
+                    content: Text('Successfully imported "$title"'),
+                    behavior: SnackBarBehavior.floating,
+                  ),
+                );
+                Navigator.of(context).pop(); // Go back from scanner
               },
               child: const Text('Import'),
             ),
@@ -135,7 +134,7 @@ class _QrScannerScreenState extends State<QrScannerScreen> {
             Container(
               height: 240,
               decoration: BoxDecoration(
-                color: theme.colorScheme.surfaceVariant,
+                color: theme.colorScheme.surfaceContainerHighest,
                 borderRadius: BorderRadius.circular(16),
                 border: Border.all(color: theme.colorScheme.primary, width: 2),
               ),

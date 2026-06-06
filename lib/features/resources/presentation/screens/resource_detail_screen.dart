@@ -13,7 +13,7 @@ import '../../../../core/widgets/markdown_editor_view.dart';
 class ResourceDetailScreen extends StatefulWidget {
   final String resourceId;
 
-  const ResourceDetailScreen({Key? key, required this.resourceId}) : super(key: key);
+  const ResourceDetailScreen({super.key, required this.resourceId});
 
   @override
   State<ResourceDetailScreen> createState() => _ResourceDetailScreenState();
@@ -52,15 +52,14 @@ class _ResourceDetailScreenState extends State<ResourceDetailScreen> {
             icon: Icon(resource.isArchived ? Icons.unarchive : Icons.archive),
             onPressed: () async {
               await resourceProvider.toggleArchived(resource.id);
-              if (mounted) {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(
-                    content: Text(resource.isArchived ? 'Resource unarchived' : 'Resource archived'),
-                    behavior: SnackBarBehavior.floating,
-                  ),
-                );
-                Navigator.of(context).pop();
-              }
+              if (!context.mounted) return;
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text(resource.isArchived ? 'Resource unarchived' : 'Resource archived'),
+                  behavior: SnackBarBehavior.floating,
+                ),
+              );
+              Navigator.of(context).pop();
             },
           ),
           IconButton(
@@ -302,7 +301,7 @@ class _ResourceDetailScreenState extends State<ResourceDetailScreen> {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
       decoration: BoxDecoration(
-        color: color.withOpacity(0.1),
+        color: color.withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(12),
         border: Border.all(color: color, width: 1),
       ),
@@ -370,16 +369,15 @@ class _ResourceDetailScreenState extends State<ResourceDetailScreen> {
           ElevatedButton(
             onPressed: () async {
               await provider.deleteResource(resource.id);
+              if (!context.mounted) return;
               Navigator.of(ctx).pop();
-              if (mounted) {
-                Navigator.of(context).pop(); // Go back to list
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(
-                    content: Text('Resource deleted'),
-                    behavior: SnackBarBehavior.floating,
-                  ),
-                );
-              }
+              Navigator.of(context).pop(); // Go back to list
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(
+                  content: Text('Resource deleted'),
+                  behavior: SnackBarBehavior.floating,
+                ),
+              );
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.red,

@@ -5,7 +5,7 @@ import '../../../resources/data/models/resource_model.dart';
 class QrGeneratorScreen extends StatelessWidget {
   final ResourceModel resource;
 
-  const QrGeneratorScreen({Key? key, required this.resource}) : super(key: key);
+  const QrGeneratorScreen({super.key, required this.resource});
 
   @override
   Widget build(BuildContext context) {

@@ -7,7 +7,7 @@ import '../../../../core/widgets/markdown_editor_view.dart';
 class AddEditResourceScreen extends StatefulWidget {
   final ResourceModel? resource;
 
-  const AddEditResourceScreen({Key? key, this.resource}) : super(key: key);
+  const AddEditResourceScreen({super.key, this.resource});
 
   @override
   State<AddEditResourceScreen> createState() => _AddEditResourceScreenState();

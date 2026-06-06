@@ -6,11 +6,10 @@ class MarkdownEditorView extends StatefulWidget {
   final String initialValue;
   final ValueChanged<String> onChanged;
 
-  const MarkdownEditorView({
-    Key? key,
+  const MarkdownEditorView({super.key,
     required this.initialValue,
     required this.onChanged,
-  }) : super(key: key);
+  });
 
   @override
   State<MarkdownEditorView> createState() => _MarkdownEditorViewState();
@@ -42,7 +41,7 @@ class _MarkdownEditorViewState extends State<MarkdownEditorView> {
         children: [
           // Header Bar
           Material(
-            color: theme.colorScheme.surfaceVariant.withOpacity(0.5),
+            color: theme.colorScheme.surfaceContainerHighest.withValues(alpha: 0.5),
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
               child: Row(
@@ -99,10 +98,10 @@ class _MarkdownEditorViewState extends State<MarkdownEditorView> {
                       code: theme.textTheme.bodyMedium?.copyWith(
                         fontFamily: 'monospace',
                         color: theme.colorScheme.primary,
-                        backgroundColor: theme.colorScheme.surfaceVariant,
+                        backgroundColor: theme.colorScheme.surfaceContainerHighest,
                       ),
                       codeblockDecoration: BoxDecoration(
-                        color: theme.colorScheme.surfaceVariant,
+                        color: theme.colorScheme.surfaceContainerHighest,
                         borderRadius: BorderRadius.circular(8),
                         border: Border.all(color: theme.colorScheme.outlineVariant),
                       ),
