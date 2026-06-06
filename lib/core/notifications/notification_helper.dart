@@ -78,14 +78,13 @@ class NotificationHelper {
       android: androidDetails,
     );
 
-    // Use named parameters with uiLocalNotificationDateInterpretation
+    // Use named parameters with proper API
     await _notifications.zonedSchedule(
       id,
       title,
       body,
       _nextInstanceOfTime(hour, minute),
       platformDetails,
-      uiLocalNotificationDateInterpretation: UILocalNotificationDateInterpretation.absoluteTime,
       androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
       matchDateTimeComponents: DateTimeComponents.time,
     );
