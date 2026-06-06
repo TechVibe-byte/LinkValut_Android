@@ -19,7 +19,7 @@ class NotificationHelper {
 
     // Initialize with onDidReceiveNotificationResponse callback
     await _notifications.initialize(
-      initializationSettings: initializationSettings,
+      initializationSettings,
       onDidReceiveNotificationResponse: _onDidReceiveNotificationResponse,
     );
   }
@@ -94,7 +94,6 @@ class NotificationHelper {
       scheduledDate: _nextInstanceOfTime(hour, minute),
       notificationDetails: platformDetails,
       androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
-      uiLocalNotificationDateInterpretation: UILocalNotificationDateInterpretation.absoluteTime,
       matchDateTimeComponents: DateTimeComponents.time,
       payload: payload,
     );

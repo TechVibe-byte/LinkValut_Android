@@ -158,7 +158,7 @@ class _ResourceDetailScreenState extends State<ResourceDetailScreen> {
                     ListTile(
                       leading: const Icon(Icons.share),
                       title: const Text('Share Resource'),
-                      onTap: () => SharePlus.share(
+                      onTap: () => Share.share(
                         'Checkout this resource: ${resource.title}\nURL: ${resource.url}',
                       ),
                     ),
