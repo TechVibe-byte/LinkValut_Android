@@ -26,7 +26,7 @@ class BackupHelper {
       final file = File('${tempDir.path}/linkvault_backup_${DateTime.now().millisecondsSinceEpoch}.json');
       await file.writeAsString(jsonString);
 
-      await Share.shareXFiles(
+      await SharePlus.shareXFiles(
         [XFile(file.path)],
         subject: 'LinkVault Backup',
         text: 'Backup exported from LinkVault on ${DateTime.now()}',

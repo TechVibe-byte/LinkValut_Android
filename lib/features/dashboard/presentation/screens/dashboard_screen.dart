@@ -9,7 +9,7 @@ import '../../../resources/presentation/screens/resource_detail_screen.dart';
 import '../../../qr/presentation/screens/qr_scanner_screen.dart';
 
 class DashboardScreen extends StatelessWidget {
-  const DashboardScreen({Key? key}) : super(key: key);
+  const DashboardScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -115,14 +115,14 @@ class DashboardScreen extends StatelessWidget {
                   Text(
                     'Daily Goal: $completedToday / $dailyGoal completed',
                     style: theme.textTheme.bodyMedium?.copyWith(
-                      color: theme.colorScheme.onPrimaryContainer.withOpacity(0.8),
+                      color: theme.colorScheme.onPrimaryContainer.withValues(alpha: 0.8),
                     ),
                   ),
                   const SizedBox(height: 8),
                   LinearProgressIndicator(
                     value: progress,
                     color: theme.colorScheme.primary,
-                    backgroundColor: theme.colorScheme.onPrimaryContainer.withOpacity(0.2),
+                    backgroundColor: theme.colorScheme.onPrimaryContainer.withValues(alpha: 0.2),
                     borderRadius: BorderRadius.circular(4),
                   ),
                 ],
@@ -169,7 +169,7 @@ class DashboardScreen extends StatelessWidget {
             const SizedBox(height: 12),
             LinearProgressIndicator(
               value: resource.progressPercentage / 100,
-              backgroundColor: theme.colorScheme.surfaceVariant,
+              backgroundColor: theme.colorScheme.surfaceContainerHighest,
               borderRadius: BorderRadius.circular(4),
             ),
             const SizedBox(height: 12),
@@ -231,7 +231,7 @@ class DashboardScreen extends StatelessWidget {
         child: Row(
           children: [
             CircleAvatar(
-              backgroundColor: color.withOpacity(0.1),
+              backgroundColor: color.withValues(alpha: 0.1),
               child: Icon(icon, color: color, size: 20),
             ),
             const SizedBox(width: 12),
@@ -379,7 +379,7 @@ class DashboardScreen extends StatelessWidget {
                     LinearProgressIndicator(
                       value: pct,
                       color: _getPlatformColor(entry.key),
-                      backgroundColor: theme.colorScheme.surfaceVariant,
+                      backgroundColor: theme.colorScheme.surfaceContainerHighest,
                       borderRadius: BorderRadius.circular(4),
                     ),
                   ],

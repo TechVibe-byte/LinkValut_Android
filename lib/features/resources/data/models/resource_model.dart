@@ -47,20 +47,20 @@ class ResourceModel extends HiveObject {
   int queueIndex;
 
   ResourceModel({
-    required this.id,
-    required this.title,
-    required this.url,
-    required this.platformType,
-    required this.tags,
-    required this.notes,
-    this.isFavorite = false,
-    this.isRead = false,
-    this.progressPercentage = 0.0,
-    required this.dateAdded,
-    required this.lastUpdated,
-    this.learningStatus = 'Not Started',
-    this.isArchived = false,
-    this.queueIndex = 0,
+    required id,
+    required title,
+    required url,
+    required platformType,
+    required tags,
+    required notes,
+    isFavorite = false,
+    isRead = false,
+    progressPercentage = 0.0,
+    required dateAdded,
+    required lastUpdated,
+    learningStatus = 'Not Started',
+    isArchived = false,
+    queueIndex = 0,
   });
 
   ResourceModel copyWith({
@@ -78,7 +78,7 @@ class ResourceModel extends HiveObject {
     int? queueIndex,
   }) {
     return ResourceModel(
-      id: this.id,
+      id: id,
       title: title ?? this.title,
       url: url ?? this.url,
       platformType: platformType ?? this.platformType,
@@ -87,7 +87,7 @@ class ResourceModel extends HiveObject {
       isFavorite: isFavorite ?? this.isFavorite,
       isRead: isRead ?? this.isRead,
       progressPercentage: progressPercentage ?? this.progressPercentage,
-      dateAdded: this.dateAdded,
+      dateAdded: dateAdded,
       lastUpdated: lastUpdated ?? this.lastUpdated,
       learningStatus: learningStatus ?? this.learningStatus,
       isArchived: isArchived ?? this.isArchived,

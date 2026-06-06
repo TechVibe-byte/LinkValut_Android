@@ -7,7 +7,7 @@ import '../../../learning/presentation/providers/learning_provider.dart';
 import 'package:intl/intl.dart';
 
 class AnalyticsScreen extends StatelessWidget {
-  const AnalyticsScreen({Key? key}) : super(key: key);
+  const AnalyticsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -193,7 +193,7 @@ class AnalyticsScreen extends StatelessWidget {
                       dotData: const FlDotData(show: false),
                       belowBarData: BarAreaData(
                         show: true,
-                        color: theme.colorScheme.primary.withOpacity(0.15),
+                        color: theme.colorScheme.primary.withValues(alpha: 0.15),
                       ),
                     ),
                   ],

@@ -6,7 +6,7 @@ import '../../../analytics/presentation/screens/analytics_screen.dart';
 import '../../../settings/presentation/screens/settings_screen.dart';
 
 class HomeWrapper extends StatefulWidget {
-  const HomeWrapper({Key? key}) : super(key: key);
+  const HomeWrapper({super.key});
 
   @override
   State<HomeWrapper> createState() => _HomeWrapperState();
