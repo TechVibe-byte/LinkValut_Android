@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:timezone/data/latest_10y.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
@@ -55,7 +56,7 @@ class NotificationHelper {
       android: androidDetails,
     );
 
-    // Use positional parameters for show() method
+    // Use named parameters for show() method
     await _notifications.show(
       id,
       title,
@@ -85,7 +86,7 @@ class NotificationHelper {
       android: androidDetails,
     );
 
-    // Use zonedSchedule with proper positional parameters
+    // Use zonedSchedule with named parameters
     await _notifications.zonedSchedule(
       id,
       title,
@@ -94,8 +95,6 @@ class NotificationHelper {
       platformDetails,
       androidScheduleMode: AndroidScheduleMode.exactAllowWhileIdle,
       matchDateTimeComponents: DateTimeComponents.time,
-      uiLocalNotificationDateInterpretation:
-          UILocalNotificationDateInterpretation.absoluteTime,
       payload: payload,
     );
   }
